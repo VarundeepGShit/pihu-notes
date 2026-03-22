@@ -50,6 +50,16 @@ export default function Header() {
           >
             ⚡ Revision
           </Link>
+          <Link
+            href="/listen"
+            className={`rounded-full px-3 py-1.5 text-sm font-semibold transition-all ${
+              pathname === "/listen"
+                ? "bg-pihu-deep text-white shadow-sm"
+                : "text-pihu-deep hover:bg-pihu-light"
+            }`}
+          >
+            🎧 Listen
+          </Link>
         </nav>
 
         {/* Right: progress indicator */}

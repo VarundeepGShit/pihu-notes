@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Kalam, Patrick_Hand } from "next/font/google";
 import "./globals.css";
+import AudioWrapper from "@/components/AudioWrapper";
 
 const kalam = Kalam({
   weight: ["400", "700"],
@@ -30,7 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${kalam.variable} ${patrickHand.variable}`}>
-      <body className="min-h-screen flex flex-col antialiased">{children}</body>
+      <body className="min-h-screen flex flex-col antialiased">
+        <AudioWrapper>{children}</AudioWrapper>
+      </body>
     </html>
   );
 }
