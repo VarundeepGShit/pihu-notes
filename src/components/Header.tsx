@@ -29,37 +29,33 @@ export default function Header() {
         </Link>
 
         {/* Center: nav tabs */}
-        <nav className="flex items-center gap-1">
-          <Link
-            href="/"
-            className={`rounded-full px-3 py-1.5 text-sm font-semibold transition-all ${
-              pathname === "/"
-                ? "bg-pihu-deep text-white shadow-sm"
-                : "text-pihu-deep hover:bg-pihu-light"
-            }`}
-          >
-            📚 Notes
-          </Link>
-          <Link
-            href="/revision"
-            className={`rounded-full px-3 py-1.5 text-sm font-semibold transition-all ${
-              pathname === "/revision"
-                ? "bg-pihu-deep text-white shadow-sm"
-                : "text-pihu-deep hover:bg-pihu-light"
-            }`}
-          >
-            ⚡ Revision
-          </Link>
-          <Link
-            href="/listen"
-            className={`rounded-full px-3 py-1.5 text-sm font-semibold transition-all ${
-              pathname === "/listen"
-                ? "bg-pihu-deep text-white shadow-sm"
-                : "text-pihu-deep hover:bg-pihu-light"
-            }`}
-          >
-            🎧 Listen
-          </Link>
+        <nav className="flex items-center gap-0.5 sm:gap-1">
+          {[
+            { href: "/", emoji: "📚", label: "Notes" },
+            { href: "/revision", emoji: "⚡", label: "Revision" },
+            { href: "/listen", emoji: "🎧", label: "Listen" },
+            { href: "/cases", emoji: "🏥", label: "Cases" },
+            { href: "/viva", emoji: "🎤", label: "Viva" },
+          ].map((tab) => {
+            const isActive =
+              tab.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(tab.href);
+            return (
+              <Link
+                key={tab.href}
+                href={tab.href}
+                className={`rounded-full px-2 sm:px-3 py-1.5 text-sm font-semibold transition-all ${
+                  isActive
+                    ? "bg-pihu-deep text-white shadow-sm"
+                    : "text-pihu-deep hover:bg-pihu-light"
+                }`}
+              >
+                {tab.emoji}
+                <span className="hidden sm:inline"> {tab.label}</span>
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Right: progress indicator */}
