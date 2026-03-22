@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useProgress } from "@/hooks/useProgress";
 import { totalTopics } from "@/data/topics";
@@ -8,6 +9,7 @@ import { totalTopics } from "@/data/topics";
 export default function Header() {
   const { completedCount, loaded } = useProgress();
   const pct = loaded ? (completedCount / totalTopics) * 100 : 0;
+  const pathname = usePathname();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-pink border-b border-pihu-mid/30">
@@ -25,6 +27,30 @@ export default function Header() {
             Pihu&apos;s Notes
           </span>
         </Link>
+
+        {/* Center: nav tabs */}
+        <nav className="flex items-center gap-1">
+          <Link
+            href="/"
+            className={`rounded-full px-3 py-1.5 text-sm font-semibold transition-all ${
+              pathname === "/"
+                ? "bg-pihu-deep text-white shadow-sm"
+                : "text-pihu-deep hover:bg-pihu-light"
+            }`}
+          >
+            📚 Notes
+          </Link>
+          <Link
+            href="/revision"
+            className={`rounded-full px-3 py-1.5 text-sm font-semibold transition-all ${
+              pathname === "/revision"
+                ? "bg-pihu-deep text-white shadow-sm"
+                : "text-pihu-deep hover:bg-pihu-light"
+            }`}
+          >
+            ⚡ Revision
+          </Link>
+        </nav>
 
         {/* Right: progress indicator */}
         <div className="flex items-center gap-3">
