@@ -85,7 +85,49 @@ export default function VivaPage() {
           </div>
         </section>
 
-        {/* Setup Section */}
+        {/* Voice Viva Card — the star feature */}
+        <section className="max-w-2xl mx-auto px-4 pb-6">
+          <Link
+            href="/viva/room"
+            className="block group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#1a1a2e] via-[#16213e] to-[#0f3460] p-6 shadow-xl border border-white/10 hover:shadow-2xl hover:scale-[1.01] transition-all duration-300"
+          >
+            <div className="flex items-center gap-5">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center shadow-lg shadow-pink-500/30 flex-shrink-0">
+                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="text-white font-bold text-lg">
+                    Voice Viva with Pihu
+                  </h3>
+                  <span className="bg-pink-500/20 text-pink-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-pink-500/30 uppercase tracking-wide">
+                    NEW
+                  </span>
+                </div>
+                <p className="text-white/60 text-sm">
+                  Talk to Pihu in real-time! She&apos;ll ask questions, listen to your answers, and give instant feedback — just like a real viva.
+                </p>
+              </div>
+              <svg className="w-6 h-6 text-white/40 group-hover:text-white/80 group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+            {/* Decorative glow */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl" />
+          </Link>
+        </section>
+
+        {/* Divider */}
+        <div className="max-w-2xl mx-auto px-4 pb-4 flex items-center gap-3">
+          <div className="flex-1 h-px bg-pihu-light" />
+          <span className="text-pihu-ink/30 text-xs font-patrick">or try text-based viva</span>
+          <div className="flex-1 h-px bg-pihu-light" />
+        </div>
+
+        {/* Text Viva Setup Section */}
         <section className="max-w-2xl mx-auto px-4 pb-8">
           <div className="bg-white rounded-2xl border border-pihu-light p-6 shadow-sm space-y-6">
             {/* Subject Selection */}
