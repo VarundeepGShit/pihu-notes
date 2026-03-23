@@ -12,40 +12,50 @@ export default function VivaRoomPage() {
   const [elapsed, setElapsed] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const orbRef = useRef<HTMLDivElement>(null);
 
   const conversation = useConversation({
-    onConnect: () => {
-      setAgentState("listening");
-      setError(null);
-      // Start timer
-      timerRef.current = setInterval(() => {
-        setElapsed((prev) => prev + 1);
-      }, 1000);
-    },
-    onDisconnect: () => {
-      setAgentState("idle");
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-        timerRef.current = null;
+    onStatusChange: ({ status }) => {
+      console.log("Status changed:", status);
+      if (status === "connected") {
+        setAgentState("listening");
+        setError(null);
+        if (!timerRef.current) {
+          timerRef.current = setInterval(() => {
+            setElapsed((prev) => prev + 1);
+          }, 1000);
+        }
+      } else if (status === "disconnected") {
+        setAgentState("idle");
+        if (timerRef.current) {
+          clearInterval(timerRef.current);
+          timerRef.current = null;
+        }
+      } else if (status === "connecting") {
+        setAgentState("connecting");
       }
     },
-    onError: (err) => {
+    onModeChange: ({ mode }) => {
+      console.log("Mode changed:", mode);
+      if (mode === "speaking") {
+        setAgentState("speaking");
+      } else if (mode === "listening") {
+        setAgentState("listening");
+      }
+    },
+    onError: (err: unknown) => {
       console.error("Conversation error:", err);
-      setError("Connection error. Please try again.");
-      setAgentState("idle");
+      const msg =
+        err instanceof Error
+          ? err.message
+          : typeof err === "string"
+            ? err
+            : JSON.stringify(err);
+      setError(`Voice error: ${msg}`);
     },
     onMessage: (msg) => {
       console.log("Message:", msg);
     },
   });
-
-  // Track speaking state
-  useEffect(() => {
-    if (conversation.status === "connected") {
-      setAgentState(conversation.isSpeaking ? "speaking" : "listening");
-    }
-  }, [conversation.status, conversation.isSpeaking]);
 
   // Cleanup timer on unmount
   useEffect(() => {
@@ -70,12 +80,18 @@ export default function VivaRoomPage() {
 
     try {
       const res = await fetch("/api/signed-url");
-      if (!res.ok) throw new Error("Failed to get signed URL");
+      if (!res.ok) {
+        const body = await res.text();
+        throw new Error(`Signed URL failed (${res.status}): ${body}`);
+      }
       const { signedUrl } = await res.json();
-      await conversation.startSession({ signedUrl });
-    } catch (err) {
+      console.log("Got signed URL, starting session...");
+      const sessionId = await conversation.startSession({ signedUrl });
+      console.log("Session started:", sessionId);
+    } catch (err: unknown) {
       console.error("Start error:", err);
-      setError("Could not connect. Check your internet and try again.");
+      const msg = err instanceof Error ? err.message : String(err);
+      setError(`Connection failed: ${msg}`);
       setAgentState("idle");
     }
   }, [conversation]);
@@ -187,19 +203,17 @@ export default function VivaRoomPage() {
               </>
             )}
 
-            {/* Sound wave orb when listening */}
+            {/* Sound wave when listening */}
             {agentState === "listening" && (
-              <div
-                ref={orbRef}
-                className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1"
-              >
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div
                     key={i}
-                    className="w-1 bg-green-400 rounded-full animate-sound-wave"
+                    className="w-1 bg-green-400 rounded-full"
                     style={{
+                      animation: `sound-wave 0.8s ease-in-out infinite`,
                       animationDelay: `${i * 0.15}s`,
-                      height: `${8 + Math.random() * 16}px`,
+                      height: "4px",
                     }}
                   />
                 ))}
@@ -218,7 +232,9 @@ export default function VivaRoomPage() {
 
         {/* Status indicator */}
         <div className="mb-8 text-center">
-          <p className={`text-lg font-semibold ${statusColor} transition-colors`}>
+          <p
+            className={`text-lg font-semibold ${statusColor} transition-colors`}
+          >
             {statusText}
           </p>
           {agentState === "listening" && (
@@ -361,9 +377,6 @@ export default function VivaRoomPage() {
           50% {
             height: 20px;
           }
-        }
-        .animate-sound-wave {
-          animation: sound-wave 0.8s ease-in-out infinite;
         }
       `}</style>
     </div>
