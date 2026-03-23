@@ -56,6 +56,40 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── Dyson Airwrap Challenge Banner ── */}
+        <section className="px-4 pb-6">
+          <div className="max-w-2xl mx-auto relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#1a1a2e] via-[#2d1b4e] to-[#4a1942] p-5 sm:p-6 shadow-xl border border-white/10 animate-fade-in-up">
+            {/* Sparkle decorations */}
+            <div className="absolute top-3 right-4 text-yellow-300 text-lg animate-pulse">✨</div>
+            <div className="absolute bottom-3 left-6 text-pink-300 text-sm animate-pulse" style={{ animationDelay: '0.5s' }}>💫</div>
+            <div className="absolute top-1/2 right-12 text-yellow-200 text-xs animate-pulse" style={{ animationDelay: '1s' }}>⭐</div>
+
+            <div className="relative z-10 flex items-center gap-4">
+              <div className="flex-shrink-0 text-4xl sm:text-5xl">🎁</div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <h3 className="text-white font-bold text-base sm:text-lg leading-tight">
+                    Varun&apos;s Promise
+                  </h3>
+                  <span className="bg-gradient-to-r from-yellow-400 to-amber-500 text-[9px] font-bold px-2 py-0.5 rounded-full text-black uppercase tracking-wider">
+                    Challenge
+                  </span>
+                </div>
+                <p className="text-white/80 text-sm sm:text-base leading-snug mb-2">
+                  Score <span className="text-yellow-300 font-bold">75%+ (Distinction)</span> in your 3rd Prof exams and Varun will gift you a <span className="text-pink-300 font-bold">Dyson Airwrap</span> 💕
+                </p>
+                <p className="text-white/40 text-xs">
+                  That&apos;s the deal, Sammy. No take-backs. Now study harder! 📚
+                </p>
+              </div>
+            </div>
+
+            {/* Glow effects */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-pink-500/15 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/15 rounded-full blur-2xl" />
+          </div>
+        </section>
+
         {/* ── Daily Quote ── */}
         <section className="px-4 pb-8">
           <DailyQuote />
