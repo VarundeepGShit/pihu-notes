@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect, type ReactNode } from "react";
-import Sticker from "./Sticker";
-
 const STORAGE_KEY = "sw-auth-token";
 
 export default function PasswordGate({ children }: { children: ReactNode }) {
@@ -60,9 +58,11 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
       <div className="mesh-bg" aria-hidden="true" />
 
       <div className="relative z-10 w-full max-w-sm animate-fade-in-up">
-        {/* Sticker */}
+        {/* Heart icon */}
         <div className="flex justify-center mb-6">
-          <Sticker pose="heart-hands" size={160} />
+          <div className="w-20 h-20 rounded-2xl glass flex items-center justify-center text-4xl">
+            🩷
+          </div>
         </div>
 
         {/* Card */}
@@ -99,7 +99,7 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
         </div>
 
         <p className="text-center text-white/20 text-xs mt-6">
-          Made with love by Varun
+          Made with 🩷
         </p>
       </div>
     </div>
