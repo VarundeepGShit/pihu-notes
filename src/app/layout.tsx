@@ -1,27 +1,25 @@
 import type { Metadata } from "next";
-import { Kalam, Patrick_Hand } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import AudioWrapper from "@/components/AudioWrapper";
 
-const kalam = Kalam({
-  weight: ["400", "700"],
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-family-kalam",
+  variable: "--font-family-inter",
   display: "swap",
 });
 
-const patrickHand = Patrick_Hand({
-  weight: "400",
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-family-patrick",
+  variable: "--font-family-plus-jakarta",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Pihu's Notes — Sammy's Study Kit",
+  title: "Sammy Wise — Your MBBS Study Companion",
   description:
-    "Cute, comprehensive MBBS 3rd year study notes made with love by Varun for Sammy. 42 topics across 5 subjects.",
-  keywords: ["MBBS", "study notes", "medical", "Pihu", "Sammy"],
+    "A polished, exam-focused study platform for MBBS 3rd year. 42 topics across 5 subjects. Built with love by Varun.",
+  keywords: ["MBBS", "study notes", "medical", "Sammy Wise", "exam prep"],
 };
 
 export default function RootLayout({
@@ -30,8 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${kalam.variable} ${patrickHand.variable}`}>
+    <html lang="en" className={`${inter.variable} ${plusJakarta.variable}`}>
       <body className="min-h-screen flex flex-col antialiased">
+        <div className="mesh-bg" aria-hidden="true" />
         <AudioWrapper>{children}</AudioWrapper>
       </body>
     </html>

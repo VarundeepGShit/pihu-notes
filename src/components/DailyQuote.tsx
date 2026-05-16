@@ -14,38 +14,37 @@ export default function DailyQuote() {
 
   const accentMap = {
     love: {
-      border: "border-pihu-deep/30",
-      bg: "from-pihu-light to-pihu-pale",
-      icon: "\u{1FA77}", // pink heart
+      icon: "🩷",
       label: "With Love",
+      glow: "rgba(233, 30, 140, 0.15)",
     },
     motivation: {
-      border: "border-pihu-yellow/50",
-      bg: "from-amber-50 to-pihu-pale",
-      icon: "\u{1F4AA}", // flexed bicep
+      icon: "���",
       label: "Stay Strong",
+      glow: "rgba(255, 107, 157, 0.15)",
     },
     pihu: {
-      border: "border-pihu-mint/60",
-      bg: "from-pihu-mint/40 to-pihu-pale",
-      icon: "\u{1F31F}", // star
-      label: "Pihu Says",
+      icon: "🌟",
+      label: "Sammy Wise Says",
+      glow: "rgba(255, 182, 193, 0.15)",
     },
   };
 
   const accent = accentMap[quote.type];
 
   return (
-    <div
-      className={`w-full max-w-2xl mx-auto rounded-2xl border ${accent.border} bg-gradient-to-br ${accent.bg} p-6 shadow-md animate-fade-in-up`}
-    >
-      <div className="flex items-start gap-3">
-        <span className="text-3xl flex-shrink-0 mt-0.5">{accent.icon}</span>
+    <div className="w-full max-w-3xl mx-auto glass rounded-2xl p-6 animate-fade-in-up relative overflow-hidden">
+      <div
+        className="absolute top-0 left-0 w-32 h-32 rounded-full blur-3xl"
+        style={{ background: accent.glow }}
+      />
+      <div className="relative z-10 flex items-start gap-4">
+        <span className="text-2xl flex-shrink-0 mt-0.5">{accent.icon}</span>
         <div className="flex-1">
-          <p className="text-pihu-ink/60 text-xs font-semibold uppercase tracking-wider mb-2">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40 mb-2">
             {accent.label}
           </p>
-          <p className="font-patrick text-lg italic text-pihu-ink leading-relaxed">
+          <p className="text-base italic text-white/70 leading-relaxed">
             &ldquo;{quote.text}&rdquo;
           </p>
         </div>

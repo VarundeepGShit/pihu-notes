@@ -18,31 +18,52 @@ export default function SubjectCard({ subject }: SubjectCardProps) {
 
   return (
     <Link href={`/subject/${subject.slug}`} className="block group">
-      <div className="bg-white/80 rounded-2xl shadow-md p-6 border border-pihu-light hover:scale-[1.02] hover:shadow-lg transition-all duration-200 flex flex-col items-center text-center gap-3">
-        {/* Subject Emoji */}
-        <span className="text-5xl">{subject.emoji}</span>
+      <div className="mirror-container">
+        {/* Main card */}
+        <div className="glass glass-hover rounded-2xl p-6 flex flex-col items-center text-center gap-4 relative overflow-hidden">
+          {/* Subtle shimmer overlay */}
+          <div className="absolute inset-0 shimmer rounded-2xl" />
 
-        {/* Subject Name */}
-        <h3 className="font-kalam text-xl font-bold text-pihu-ink leading-tight">
-          {subject.shortName}
-        </h3>
-        <p className="text-sm text-pihu-ink/60">
-          {total} topic{total !== 1 ? "s" : ""}
-        </p>
+          {/* Subject icon */}
+          <div className="relative z-10">
+            <span className="text-4xl block">{subject.emoji}</span>
+            <div
+              className="subject-dot mx-auto mt-2"
+              style={{ color: subject.color }}
+            />
+          </div>
 
-        {/* Progress Ring */}
-        <ProgressRing
-          size={56}
-          progress={progress}
-          strokeWidth={4}
-          color={subject.color}
-          bgColor={subject.lightColor}
-        />
+          {/* Subject name */}
+          <div className="relative z-10">
+            <h3 className="font-heading text-lg font-bold text-white leading-tight">
+              {subject.shortName}
+            </h3>
+            <p className="text-sm text-white/40 mt-0.5">
+              {total} topic{total !== 1 ? "s" : ""}
+            </p>
+          </div>
 
-        {/* Status text */}
-        <p className="text-xs text-pihu-ink/50">
-          {done}/{total} completed
-        </p>
+          {/* Progress ring */}
+          <div className="relative z-10">
+            <ProgressRing
+              size={52}
+              progress={progress}
+              strokeWidth={3}
+              color={subject.color}
+              bgColor="rgba(255,255,255,0.08)"
+            />
+          </div>
+
+          {/* Status */}
+          <p className="relative z-10 text-xs text-white/40 font-medium">
+            {done}/{total} completed
+          </p>
+        </div>
+
+        {/* Mirror reflection */}
+        <div className="mirror-reflection rounded-b-2xl" aria-hidden="true">
+          <div className="w-full h-full rounded-b-2xl glass" />
+        </div>
       </div>
     </Link>
   );
