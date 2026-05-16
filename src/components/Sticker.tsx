@@ -41,7 +41,7 @@ export default function Sticker({ pose, size = 160, className = "" }: StickerPro
         style={{
           width: SHEET_W * scale,
           height: SHEET_H * scale,
-          backgroundImage: "url(/images/stickers.png?v=2)",
+          backgroundImage: "url(/images/stickers.png?v=3)",
           backgroundSize: `${SHEET_W * scale}px ${SHEET_H * scale}px`,
           backgroundPosition: `-${p.x * scale}px -${p.y * scale}px`,
           backgroundRepeat: "no-repeat",
