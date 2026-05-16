@@ -11,7 +11,7 @@ const poses = {
   walking: { x: 275, y: 535, w: 245, h: 510 },
   laughing: { x: 528, y: 525, w: 290, h: 520 },
   rose: { x: 840, y: 530, w: 260, h: 510 },
-  waving: { x: 1128, y: 525, w: 350, h: 520 },
+  waving: { x: 1150, y: 525, w: 335, h: 520 },
 } as const;
 
 export type StickerPose = keyof typeof poses;
@@ -34,15 +34,14 @@ export default function Sticker({ pose, size = 160, className = "" }: StickerPro
         width: displayW,
         height: size,
         overflow: "hidden",
-        borderRadius: size * 0.12,
-        filter: "drop-shadow(0 4px 20px rgba(233, 30, 140, 0.3))",
+        filter: "drop-shadow(0 4px 16px rgba(0, 0, 0, 0.4))",
       }}
     >
       <div
         style={{
           width: SHEET_W * scale,
           height: SHEET_H * scale,
-          backgroundImage: "url(/images/stickers.png)",
+          backgroundImage: "url(/images/stickers.png?v=2)",
           backgroundSize: `${SHEET_W * scale}px ${SHEET_H * scale}px`,
           backgroundPosition: `-${p.x * scale}px -${p.y * scale}px`,
           backgroundRepeat: "no-repeat",
