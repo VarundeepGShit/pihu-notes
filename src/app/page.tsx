@@ -19,50 +19,47 @@ export default function Home() {
       <main className="flex-1 pt-20 relative z-10">
         {/* ── Hero Section ── */}
         <section className="py-12 sm:py-16 px-4 sm:px-6">
-          <div className="max-w-4xl mx-auto animate-fade-in-up">
-            <div className="flex flex-col sm:flex-row items-center gap-8 sm:gap-12">
-              {/* Sticker */}
-              <Sticker pose="sitting" size={200} className="flex-shrink-0" />
+          <div className="max-w-3xl mx-auto text-center animate-fade-in-up">
+            {/* Sticker */}
+            <div className="flex justify-center mb-6">
+              <Sticker pose="sitting" size={180} />
+            </div>
 
-              {/* Text content */}
-              <div className="text-center sm:text-left flex-1">
-                {/* Brand mark */}
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-5">
-                  <span className="w-2 h-2 rounded-full gradient-pink animate-pulse-glow" />
-                  <span className="text-xs text-white/60 font-medium tracking-wide uppercase">
-                    MBBS 3rd Year Study Companion
-                  </span>
-                </div>
+            {/* Brand mark */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-5">
+              <span className="w-2 h-2 rounded-full gradient-pink animate-pulse-glow" />
+              <span className="text-xs text-white/60 font-medium tracking-wide uppercase">
+                MBBS 3rd Year Study Companion
+              </span>
+            </div>
 
-                {/* Title */}
-                <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-3">
-                  <span className="text-white">Hey Sammy,</span>
-                  <br />
-                  <span className="gradient-text">Let&apos;s ace this.</span>
-                </h1>
+            {/* Title */}
+            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-3">
+              <span className="text-white">Hey Sammy,</span>
+              <br />
+              <span className="gradient-text">Let&apos;s ace this.</span>
+            </h1>
 
-                {/* Subtitle */}
-                <p className="text-base sm:text-lg text-white/50 max-w-md mb-6">
-                  42 topics. 5 subjects. One goal — Distinction.
-                </p>
+            {/* Subtitle */}
+            <p className="text-base sm:text-lg text-white/50 max-w-md mx-auto mb-8">
+              42 topics. 5 subjects. One goal — Distinction.
+            </p>
 
-                {/* Stats row */}
-                <div className="flex items-center justify-center sm:justify-start gap-6 sm:gap-10">
-                  <div className="text-center">
-                    <p className="font-heading text-2xl font-bold text-white">{totalTopics}</p>
-                    <p className="text-xs text-white/40">Topics</p>
-                  </div>
-                  <div className="w-px h-8 bg-white/10" />
-                  <div className="text-center">
-                    <p className="font-heading text-2xl font-bold gradient-text">{loaded ? completedCount : 0}</p>
-                    <p className="text-xs text-white/40">Completed</p>
-                  </div>
-                  <div className="w-px h-8 bg-white/10" />
-                  <div className="text-center">
-                    <p className="font-heading text-2xl font-bold text-white">{subjects.length}</p>
-                    <p className="text-xs text-white/40">Subjects</p>
-                  </div>
-                </div>
+            {/* Stats row */}
+            <div className="flex items-center justify-center gap-8 sm:gap-12">
+              <div className="text-center">
+                <p className="font-heading text-2xl font-bold text-white">{totalTopics}</p>
+                <p className="text-xs text-white/40">Topics</p>
+              </div>
+              <div className="w-px h-8 bg-white/10" />
+              <div className="text-center">
+                <p className="font-heading text-2xl font-bold gradient-text">{loaded ? completedCount : 0}</p>
+                <p className="text-xs text-white/40">Completed</p>
+              </div>
+              <div className="w-px h-8 bg-white/10" />
+              <div className="text-center">
+                <p className="font-heading text-2xl font-bold text-white">{subjects.length}</p>
+                <p className="text-xs text-white/40">Subjects</p>
               </div>
             </div>
           </div>
@@ -97,7 +94,7 @@ export default function Home() {
           <div className="max-w-3xl mx-auto glass rounded-2xl p-5 sm:p-6 relative overflow-hidden animate-fade-in-up border-sw-pink/20">
             <div className="absolute top-0 right-0 w-40 h-40 bg-sw-pink/5 rounded-full blur-3xl" />
             <div className="relative z-10 flex items-center gap-4">
-              <Sticker pose="rose" size={90} className="hidden sm:block" />
+              <Sticker pose="rose" size={80} className="hidden sm:block" />
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
                   <h3 className="text-white font-heading font-bold text-base">
@@ -123,7 +120,7 @@ export default function Home() {
 
         {/* ── Subject Grid ── */}
         <section className="px-4 sm:px-6 pb-20">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             <div className="text-center mb-10">
               <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-2">
                 Your Subjects
@@ -141,10 +138,10 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Footer with waving sticker */}
+      {/* Footer */}
       <footer className="relative z-10 w-full py-8 text-center border-t border-white/5">
         <div className="flex flex-col items-center gap-3">
-          <Sticker pose="waving" size={100} />
+          <Sticker pose="waving" size={90} />
           <p className="text-white/30 text-sm">
             Made with 🩷 by Varun for Sammy &nbsp;·&nbsp; Sammy Wise
           </p>

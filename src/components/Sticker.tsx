@@ -6,11 +6,11 @@ const poses = {
   hugging: { x: 235, y: 10, w: 225, h: 505 },
   "side-by-side": { x: 468, y: 10, w: 275, h: 505 },
   selfie: { x: 748, y: 5, w: 285, h: 500 },
-  sitting: { x: 1065, y: 20, w: 410, h: 475 },
+  sitting: { x: 1130, y: 40, w: 350, h: 450 },
   "heart-hands": { x: 18, y: 535, w: 255, h: 505 },
   walking: { x: 275, y: 535, w: 245, h: 510 },
   laughing: { x: 528, y: 525, w: 290, h: 520 },
-  rose: { x: 825, y: 520, w: 280, h: 530 },
+  rose: { x: 840, y: 530, w: 260, h: 510 },
   waving: { x: 1128, y: 525, w: 350, h: 520 },
 } as const;
 
