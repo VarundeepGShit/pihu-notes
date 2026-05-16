@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import AudioWrapper from "@/components/AudioWrapper";
+import PasswordGate from "@/components/PasswordGate";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,8 +31,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${plusJakarta.variable}`}>
       <body className="min-h-screen flex flex-col antialiased">
-        <div className="mesh-bg" aria-hidden="true" />
-        <AudioWrapper>{children}</AudioWrapper>
+        <PasswordGate>
+          <div className="mesh-bg" aria-hidden="true" />
+          <AudioWrapper>{children}</AudioWrapper>
+        </PasswordGate>
       </body>
     </html>
   );
